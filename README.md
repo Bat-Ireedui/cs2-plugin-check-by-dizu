@@ -2,40 +2,50 @@
 
 This repository tracks and monitors version updates for Counter-Strike 2 plugins.
 
+_Last updated: just now_
+
 ## Monitored Plugins
 
 The following plugins are being monitored for version updates:
 
 ### ✅ CounterStrikeSharp
 - **Current Version**: 1.0.343
+- **Last Updated**: never
 - **Repository**: [roflmuffin/CounterStrikeSharp](https://github.com/roflmuffin/CounterStrikeSharp)
 
 ### ✅ CS2-Tags
 - **Current Version**: build-37
+- **Last Updated**: never
 - **Repository**: [daffyyyy/CS2-Tags](https://github.com/daffyyyy/CS2-Tags)
 
 ### ✅ CS2-SimpleAdmin
 - **Current Version**: build-1.7.8-beta-3
+- **Last Updated**: never
 - **Repository**: [daffyyyy/CS2-SimpleAdmin](https://github.com/daffyyyy/CS2-SimpleAdmin)
 
 ### ✅ CS2_ExecAfter
 - **Current Version**: 1.0.0
+- **Last Updated**: never
 - **Repository**: [kus/CS2_ExecAfter](https://github.com/kus/CS2_ExecAfter)
 
 ### ✅ MatchZy
 - **Current Version**: 0.8.15
+- **Last Updated**: never
 - **Repository**: [shobhit-pathak/MatchZy](https://github.com/shobhit-pathak/MatchZy)
 
 ### ✅ WeaponPaints
 - **Current Version**: build-399
+- **Last Updated**: never
 - **Repository**: [Nereziel/cs2-WeaponPaints](https://github.com/Nereziel/cs2-WeaponPaints)
 
 ### ✅ PlayerSettingsCore
 - **Current Version**: 0.9.3
+- **Last Updated**: never
 - **Repository**: [NickFox007/PlayerSettingsCS2](https://github.com/NickFox007/PlayerSettingsCS2)
 
 ### ✅ MenuManagerCore
 - **Current Version**: 1.4.1
+- **Last Updated**: never
 - **Repository**: [NickFox007/MenuManagerCS2](https://github.com/NickFox007/MenuManagerCS2)
 
 ## Automatic Monitoring
