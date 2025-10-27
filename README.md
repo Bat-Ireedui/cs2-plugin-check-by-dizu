@@ -24,7 +24,7 @@ The following plugins are being monitored for version updates:
 
 ## Automatic Monitoring
 
-The repository uses GitHub Actions to automatically check for plugin updates every 20 minutes. When a new version is detected, the workflow will fail intentionally to notify you of the update.
+The repository uses GitHub Actions to automatically check for plugin updates every 20 minutes. When a new version is detected, the workflow will automatically update the version information in both `versions.yml` and this README file.
 
 ### Status Badge
 
@@ -35,8 +35,9 @@ The repository uses GitHub Actions to automatically check for plugin updates eve
 1. The `check.yml` workflow runs every 20 minutes (or can be triggered manually)
 2. It reads plugin information from `versions.yml`
 3. Compares current versions with the latest releases on GitHub
-4. Reports any outdated plugins
+4. Automatically updates `versions.yml` and `README.md` when new versions are detected
+5. Commits and pushes the changes back to the repository
 
 ## Update a Plugin Version
 
-To update a plugin version, edit the `versions.yml` file and update the `current` field for the relevant plugin.
+Plugin versions are automatically updated by the workflow when new releases are detected on GitHub. You can also manually update a plugin version by editing the `versions.yml` file and updating the `current` field for the relevant plugin.

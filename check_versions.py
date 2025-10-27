@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-import json, urllib.request, yaml
+import json, urllib.request, yaml, re
 from datetime import datetime, timezone
 
 def format_time_ago(timestamp):
@@ -26,6 +26,49 @@ def format_time_ago(timestamp):
             return f"{days} day{'s' if days != 1 else ''} ago"
     except:
         return "unknown"
+
+def update_readme(updates_dict):
+    """Update the README.md file with new versions for multiple plugins
+    
+    Args:
+        updates_dict: Dictionary mapping plugin names to new versions
+    
+    Returns:
+        Dictionary mapping plugin names to boolean success status
+    """
+    results = {}
+    try:
+        with open("README.md", "r") as f:
+            content = f.read()
+        
+        original_content = content
+        
+        # Apply all updates to the content
+        for plugin_name, new_version in updates_dict.items():
+            # Pattern to match the version line for the plugin
+            pattern = rf"(### ✅ {re.escape(plugin_name)}.*?- \*\*Current Version\*\*: )([^\n]+)"
+            
+            # Use re.sub and check if content changed to determine success
+            updated_content = re.sub(pattern, rf"\g<1>{new_version}", content, flags=re.DOTALL)
+            
+            if updated_content != content:
+                content = updated_content
+                results[plugin_name] = True
+            else:
+                print(f"Warning: Plugin '{plugin_name}' not found in README.md")
+                results[plugin_name] = False
+        
+        # Only write the file if at least one update was successful
+        if content != original_content:
+            with open("README.md", "w") as f:
+                f.write(content)
+            
+    except Exception as e:
+        print(f"Error updating README: {e}")
+        for plugin_name in updates_dict:
+            results[plugin_name] = False
+    
+    return results
 
 with open("versions.yml") as f:
     versions = yaml.safe_load(f)
@@ -56,8 +99,6 @@ for name, meta in versions["plugins"].items():
 
 # Update last_checked timestamp
 versions["last_checked"] = datetime.now(timezone.utc).isoformat()
-with open("versions.yml", "w") as f:
-    yaml.safe_dump(versions, f, default_flow_style=False, sort_keys=False)
 
 if errors:
     print("Errors checking the following plugins:\n")
@@ -69,6 +110,32 @@ if outdated:
     print("Updates available:\n")
     for name, cur, new in outdated:
         print(f"- {name}: {cur} -> {new}")
-    exit(1)   # mark workflow as failing so you get notified
+    
+    # Update versions.yml with new versions
+    updates_dict = {}
+    for name, cur, new in outdated:
+        versions["plugins"][name]["current"] = new
+        updates_dict[name] = new
+    
+    # Update README.md with all new versions at once
+    readme_results = update_readme(updates_dict)
+    
+    # Save updated versions
+    with open("versions.yml", "w") as f:
+        yaml.safe_dump(versions, f, default_flow_style=False, sort_keys=False)
+    
+    print("\nVersions updated in versions.yml")
+    
+    # Report README update results
+    readme_updated = [name for name, success in readme_results.items() if success]
+    readme_failed = [name for name, success in readme_results.items() if not success]
+    
+    if readme_updated:
+        print(f"README.md updated for: {', '.join(readme_updated)}")
+    if readme_failed:
+        print(f"README.md not updated for: {', '.join(readme_failed)} (plugin sections not found in README)")
 else:
     print("All plugins up to date.")
+    # Still save the timestamp update even when no updates
+    with open("versions.yml", "w") as f:
+        yaml.safe_dump(versions, f, default_flow_style=False, sort_keys=False)
