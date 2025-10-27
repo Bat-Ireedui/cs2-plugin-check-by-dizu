@@ -5,7 +5,7 @@ plugins:
     repo: https://api.github.com/repos/roflmuffin/CounterStrikeSharp/releases/latest
   CS2-SimpleAdmin:
     current: 1.7.8-beta-3
-    repo: https://api.github.com/repos/dliix66/cs2-simpleadmin/releases/latest
+    repo: https://api.github.com/repos/daffyyyy/CS2-SimpleAdmin/releases/latest
   MatchZy:
     current: 0.8.15
     repo: https://api.github.com/repos/shobhit-pathak/MatchZy/releases/latest
