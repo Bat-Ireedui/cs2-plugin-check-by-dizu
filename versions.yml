@@ -1,26 +1,14 @@
-last_checked: '2025-10-27T03:17:03.939276+00:00'
+last_checked: '2025-10-27T03:18:08.473920+00:00'
 plugins:
   CounterStrikeSharp:
     current: 1.0.343
     repo: https://api.github.com/repos/roflmuffin/CounterStrikeSharp/releases/latest
-  CS2-Tags:
-    current: 1.0.4c
-    repo: https://api.github.com/repos/daffyy/cs2-tags/releases/latest
   CS2-SimpleAdmin:
     current: 1.7.8-beta-3
     repo: https://api.github.com/repos/dliix66/cs2-simpleadmin/releases/latest
-  CS2_ExecAfter:
-    current: 1.0.0
-    repo: https://api.github.com/repos/kus/cs2-exec-after/releases/latest
   MatchZy:
     current: 0.8.15
     repo: https://api.github.com/repos/shobhit-pathak/MatchZy/releases/latest
   WeaponPaints:
     current: 3.2a
     repo: https://api.github.com/repos/Nereziel/cs2-weaponpaints/releases/latest
-  PlayerSettingsCore:
-    current: 0.9.3
-    repo: https://api.github.com/repos/NickFox/cs2-playersettings/releases/latest
-  MenuManagerCore:
-    current: 1.4.1
-    repo: https://api.github.com/repos/NickFox/cs2-menumanager/releases/latest
