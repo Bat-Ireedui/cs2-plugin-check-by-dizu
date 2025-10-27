@@ -27,11 +27,12 @@ def format_time_ago(timestamp):
     except:
         return "unknown"
 
-def update_readme(updates_dict):
+def update_readme(updates_dict, versions):
     """Update the README.md file with new versions for multiple plugins
     
     Args:
         updates_dict: Dictionary mapping plugin names to new versions
+        versions: The versions dictionary containing plugin metadata
     
     Returns:
         Dictionary mapping plugin names to boolean success status
@@ -42,6 +43,11 @@ def update_readme(updates_dict):
             content = f.read()
         
         original_content = content
+        
+        # Update README last updated timestamp
+        readme_updated_pattern = r"(_Last updated: )([^\n]+)"
+        readme_time_ago = format_time_ago(versions.get("last_checked"))
+        content = re.sub(readme_updated_pattern, rf"\g<1>{readme_time_ago}_", content)
         
         # Apply all updates to the content
         for plugin_name, new_version in updates_dict.items():
@@ -58,7 +64,16 @@ def update_readme(updates_dict):
                 print(f"Warning: Plugin '{plugin_name}' not found in README.md")
                 results[plugin_name] = False
         
-        # Only write the file if at least one update was successful
+        # Update last_updated timestamp for each plugin
+        for plugin_name in versions["plugins"].keys():
+            last_updated = versions["plugins"][plugin_name].get("last_updated")
+            time_ago = format_time_ago(last_updated)
+            
+            # Pattern to match the last updated line for the plugin
+            pattern = rf"(### ✅ {re.escape(plugin_name)}.*?- \*\*Last Updated\*\*: )([^\n]+)"
+            content = re.sub(pattern, rf"\g<1>{time_ago}", content, flags=re.DOTALL)
+        
+        # Only write the file if content changed
         if content != original_content:
             with open("README.md", "w") as f:
                 f.write(content)
@@ -111,14 +126,16 @@ if outdated:
     for name, cur, new in outdated:
         print(f"- {name}: {cur} -> {new}")
     
-    # Update versions.yml with new versions
+    # Update versions.yml with new versions and last_updated timestamps
     updates_dict = {}
+    current_time = datetime.now(timezone.utc).isoformat()
     for name, cur, new in outdated:
         versions["plugins"][name]["current"] = new
+        versions["plugins"][name]["last_updated"] = current_time
         updates_dict[name] = new
     
     # Update README.md with all new versions at once
-    readme_results = update_readme(updates_dict)
+    readme_results = update_readme(updates_dict, versions)
     
     # Save updated versions
     with open("versions.yml", "w") as f:
@@ -136,6 +153,8 @@ if outdated:
         print(f"README.md not updated for: {', '.join(readme_failed)} (plugin sections not found in README)")
 else:
     print("All plugins up to date.")
+    # Still update README with latest timestamps even when no version updates
+    update_readme({}, versions)
     # Still save the timestamp update even when no updates
     with open("versions.yml", "w") as f:
         yaml.safe_dump(versions, f, default_flow_style=False, sort_keys=False)
