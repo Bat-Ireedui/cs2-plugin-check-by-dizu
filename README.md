@@ -10,17 +10,9 @@ The following plugins are being monitored for version updates:
 - **Current Version**: 1.0.343
 - **Repository**: [roflmuffin/CounterStrikeSharp](https://github.com/roflmuffin/CounterStrikeSharp)
 
-### ✅ CS2-Tags
-- **Current Version**: 1.0.4c
-- **Repository**: [daffyy/cs2-tags](https://github.com/daffyy/cs2-tags)
-
 ### ✅ CS2-SimpleAdmin
 - **Current Version**: 1.7.8-beta-3
 - **Repository**: [dliix66/cs2-simpleadmin](https://github.com/dliix66/cs2-simpleadmin)
-
-### ✅ CS2_ExecAfter
-- **Current Version**: 1.0.0
-- **Repository**: [kus/cs2-exec-after](https://github.com/kus/cs2-exec-after)
 
 ### ✅ MatchZy
 - **Current Version**: 0.8.15
@@ -29,14 +21,6 @@ The following plugins are being monitored for version updates:
 ### ✅ WeaponPaints
 - **Current Version**: 3.2a
 - **Repository**: [Nereziel/cs2-weaponpaints](https://github.com/Nereziel/cs2-weaponpaints)
-
-### ✅ PlayerSettingsCore
-- **Current Version**: 0.9.3
-- **Repository**: [NickFox/cs2-playersettings](https://github.com/NickFox/cs2-playersettings)
-
-### ✅ MenuManagerCore
-- **Current Version**: 1.4.1
-- **Repository**: [NickFox/cs2-menumanager](https://github.com/NickFox/cs2-menumanager)
 
 ## Automatic Monitoring
 

@@ -37,18 +37,33 @@ if last_checked:
     print(f"Last checked: {time_ago}\n")
 
 outdated = []
+errors = []
 for name, meta in versions["plugins"].items():
-    req = urllib.request.urlopen(meta["repo"])
-    data = json.load(req)
-    latest = data["tag_name"].lstrip("v")
-    current = str(meta["current"])
-    if current != latest:
-        outdated.append((name, current, latest))
+    try:
+        req = urllib.request.Request(meta["repo"])
+        req.add_header('User-Agent', 'CS2-Plugin-Version-Checker')
+        req.add_header('Accept', 'application/vnd.github.v3+json')
+        response = urllib.request.urlopen(req)
+        data = json.load(response)
+        latest = data["tag_name"].lstrip("v")
+        current = str(meta["current"])
+        if current != latest:
+            outdated.append((name, current, latest))
+    except urllib.error.HTTPError as e:
+        errors.append((name, f"HTTP {e.code}: {e.reason}"))
+    except Exception as e:
+        errors.append((name, str(e)))
 
 # Update last_checked timestamp
 versions["last_checked"] = datetime.now(timezone.utc).isoformat()
 with open("versions.yml", "w") as f:
     yaml.safe_dump(versions, f, default_flow_style=False, sort_keys=False)
+
+if errors:
+    print("Errors checking the following plugins:\n")
+    for name, error in errors:
+        print(f"- {name}: {error}")
+    print()
 
 if outdated:
     print("Updates available:\n")
