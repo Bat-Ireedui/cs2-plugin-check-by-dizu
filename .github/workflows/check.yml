@@ -7,6 +7,8 @@ on:
 jobs:
   check:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -14,3 +16,12 @@ jobs:
           python-version: "3.x"
       - run: pip install -r requirements.txt
       - run: python check_versions.py
+      - name: Commit timestamp update
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add versions.yml
+          if ! git diff --staged --quiet; then
+            git commit -m "Update last_checked timestamp"
+            git push
+          fi
