@@ -1,0 +1,10 @@
+plugins:
+  CounterStrikeSharp:
+    current: 1.0.343
+    repo: "https://api.github.com/repos/roflmuffin/CounterStrikeSharp/releases/latest"
+  MatchZy:
+    current: 0.8.15
+    repo: "https://api.github.com/repos/shobhit-pathak/MatchZy/releases/latest"
+  WeaponPaints:
+    current: "3.2a"
+    repo: "https://api.github.com/repos/Nereziel/cs2-weaponpaints/releases/latest"
