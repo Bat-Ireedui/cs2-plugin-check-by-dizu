@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-import json, urllib.request, yaml, re
+import json, urllib.request, yaml, re, os
 from datetime import datetime, timezone
 
 def format_time_ago(timestamp):
@@ -26,6 +26,42 @@ def format_time_ago(timestamp):
             return f"{days} day{'s' if days != 1 else ''} ago"
     except:
         return "unknown"
+
+def write_github_summary(outdated, errors):
+    """Write a summary to GitHub Actions step summary if running in GitHub Actions
+    
+    Args:
+        outdated: List of tuples (name, current_version, new_version) for outdated plugins
+        errors: List of tuples (name, error_message) for plugins that had errors
+    """
+    summary_file = os.environ.get('GITHUB_STEP_SUMMARY')
+    if not summary_file:
+        return  # Not running in GitHub Actions
+    
+    try:
+        with open(summary_file, 'a') as f:
+            f.write("## Plugin Version Check Results\n\n")
+            
+            if outdated:
+                f.write("### 🔄 Updates Available\n\n")
+                f.write("| Plugin | Current Version | → | New Version |\n")
+                f.write("|--------|-----------------|---|-------------|\n")
+                for name, cur, new in outdated:
+                    f.write(f"| {name} | `{cur}` | → | `{new}` |\n")
+                f.write("\n")
+            else:
+                f.write("### ✅ All Plugins Up to Date\n\n")
+                f.write("No updates available for any monitored plugins.\n\n")
+            
+            if errors:
+                f.write("### ⚠️ Errors\n\n")
+                f.write("| Plugin | Error |\n")
+                f.write("|--------|-------|\n")
+                for name, error in errors:
+                    f.write(f"| {name} | {error} |\n")
+                f.write("\n")
+    except Exception as e:
+        print(f"Warning: Could not write to GitHub step summary: {e}")
 
 def update_readme(updates_dict, versions):
     """Update the README.md file with new versions for multiple plugins
@@ -114,6 +150,9 @@ for name, meta in versions["plugins"].items():
 
 # Update last_checked timestamp
 versions["last_checked"] = datetime.now(timezone.utc).isoformat()
+
+# Write GitHub Actions step summary
+write_github_summary(outdated, errors)
 
 if errors:
     print("Errors checking the following plugins:\n")
