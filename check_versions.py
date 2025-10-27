@@ -41,22 +41,27 @@ def update_readme(updates_dict):
         with open("README.md", "r") as f:
             content = f.read()
         
+        original_content = content
+        
         # Apply all updates to the content
         for plugin_name, new_version in updates_dict.items():
             # Pattern to match the version line for the plugin
             pattern = rf"(### ✅ {re.escape(plugin_name)}.*?- \*\*Current Version\*\*: )([^\n]+)"
             
-            match = re.search(pattern, content, re.DOTALL)
-            if match:
-                content = re.sub(pattern, rf"\g<1>{new_version}", content, flags=re.DOTALL)
+            # Use re.sub and check if content changed to determine success
+            updated_content = re.sub(pattern, rf"\g<1>{new_version}", content, flags=re.DOTALL)
+            
+            if updated_content != content:
+                content = updated_content
                 results[plugin_name] = True
             else:
                 print(f"Warning: Plugin '{plugin_name}' not found in README.md")
                 results[plugin_name] = False
         
-        # Write the updated content once
-        with open("README.md", "w") as f:
-            f.write(content)
+        # Only write the file if at least one update was successful
+        if content != original_content:
+            with open("README.md", "w") as f:
+                f.write(content)
             
     except Exception as e:
         print(f"Error updating README: {e}")
