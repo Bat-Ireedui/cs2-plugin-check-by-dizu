@@ -40,7 +40,7 @@ The following plugins are being monitored for version updates:
 
 ## Automatic Monitoring
 
-The repository uses GitHub Actions to automatically check for plugin updates every 20 minutes. When a new version is detected, the workflow will fail to notify you.
+The repository uses GitHub Actions to automatically check for plugin updates every 20 minutes. When a new version is detected, the workflow will fail intentionally to notify you of the update.
 
 ### Status Badge
 
