@@ -45,9 +45,9 @@ def update_readme(updates_dict, versions):
         original_content = content
         
         # Update README last updated timestamp
-        readme_updated_pattern = r"(_Last updated: )([^\n]+)"
+        readme_updated_pattern = r"(_Last updated: )([^_\n]+)(_)"
         readme_time_ago = format_time_ago(versions.get("last_checked"))
-        content = re.sub(readme_updated_pattern, rf"\g<1>{readme_time_ago}_", content)
+        content = re.sub(readme_updated_pattern, rf"\g<1>{readme_time_ago}\g<3>", content)
         
         # Apply all updates to the content
         for plugin_name, new_version in updates_dict.items():
