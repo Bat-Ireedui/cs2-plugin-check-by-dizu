@@ -11,7 +11,7 @@ The following plugins are being monitored for version updates:
 - **Repository**: [roflmuffin/CounterStrikeSharp](https://github.com/roflmuffin/CounterStrikeSharp)
 
 ### ✅ CS2-SimpleAdmin
-- **Current Version**: 1.7.8-beta-3
+- **Current Version**: build-1.7.8-beta-3
 - **Repository**: [dliix66/cs2-simpleadmin](https://github.com/dliix66/cs2-simpleadmin)
 
 ### ✅ MatchZy
@@ -19,7 +19,7 @@ The following plugins are being monitored for version updates:
 - **Repository**: [shobhit-pathak/MatchZy](https://github.com/shobhit-pathak/MatchZy)
 
 ### ✅ WeaponPaints
-- **Current Version**: 3.2a
+- **Current Version**: build-399
 - **Repository**: [Nereziel/cs2-weaponpaints](https://github.com/Nereziel/cs2-weaponpaints)
 
 ## Automatic Monitoring
