@@ -1,4 +1,4 @@
-last_checked: '2025-10-30T00:39:38.896131+00:00'
+last_checked: '2025-10-30T01:07:25.945834+00:00'
 plugins:
   CounterStrikeSharp:
     current: 1.0.344
@@ -8,8 +8,9 @@ plugins:
     current: build-37
     repo: https://api.github.com/repos/daffyyyy/CS2-Tags/releases/latest
   CS2-SimpleAdmin:
-    current: build-1.7.8-beta-3
+    current: build-1.7.8-beta-4
     repo: https://api.github.com/repos/daffyyyy/CS2-SimpleAdmin/releases/latest
+    last_updated: '2025-10-30T01:07:25.945976+00:00'
   CS2_ExecAfter:
     current: 1.0.0
     repo: https://api.github.com/repos/kus/CS2_ExecAfter/releases/latest
