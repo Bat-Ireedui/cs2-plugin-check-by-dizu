@@ -1,9 +1,9 @@
-last_checked: '2025-10-30T03:35:14.804161+00:00'
+last_checked: '2025-10-30T03:50:22.052687+00:00'
 plugins:
   CounterStrikeSharp:
-    current: 1.0.344
+    current: 1.0.345
     repo: https://api.github.com/repos/roflmuffin/CounterStrikeSharp/releases/latest
-    last_updated: '2025-10-27T06:22:06.643943+00:00'
+    last_updated: '2025-10-30T03:50:22.052832+00:00'
   CS2-Tags:
     current: build-37
     repo: https://api.github.com/repos/daffyyyy/CS2-Tags/releases/latest
