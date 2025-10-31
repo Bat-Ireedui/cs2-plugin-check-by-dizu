@@ -10,7 +10,7 @@ The following plugins are being monitored for version updates:
 
 ### ✅ CounterStrikeSharp
 - **Current Version**: 1.0.345
-- **Last Updated**: 21 hours ago
+- **Last Updated**: 22 hours ago
 - **Repository**: [roflmuffin/CounterStrikeSharp](https://github.com/roflmuffin/CounterStrikeSharp)
 
 ### ✅ CS2-Tags
@@ -20,7 +20,7 @@ The following plugins are being monitored for version updates:
 
 ### ✅ CS2-SimpleAdmin
 - **Current Version**: build-1.7.8-beta-4
-- **Last Updated**: 23 hours ago
+- **Last Updated**: 1 day ago
 - **Repository**: [daffyyyy/CS2-SimpleAdmin](https://github.com/daffyyyy/CS2-SimpleAdmin)
 
 ### ✅ CS2_ExecAfter
