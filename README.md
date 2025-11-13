@@ -19,8 +19,8 @@ The following plugins are being monitored for version updates:
 - **Repository**: [daffyyyy/CS2-Tags](https://github.com/daffyyyy/CS2-Tags)
 
 ### ✅ CS2-SimpleAdmin
-- **Current Version**: build-1.7.8-beta-5
-- **Last Updated**: 6 days ago
+- **Current Version**: build-1.7.8-beta-6
+- **Last Updated**: just now
 - **Repository**: [daffyyyy/CS2-SimpleAdmin](https://github.com/daffyyyy/CS2-SimpleAdmin)
 
 ### ✅ CS2_ExecAfter
