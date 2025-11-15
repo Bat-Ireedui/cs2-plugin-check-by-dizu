@@ -10,7 +10,7 @@ The following plugins are being monitored for version updates:
 
 ### ✅ CounterStrikeSharp
 - **Current Version**: 1.0.347
-- **Last Updated**: 17 hours ago
+- **Last Updated**: 18 hours ago
 - **Repository**: [roflmuffin/CounterStrikeSharp](https://github.com/roflmuffin/CounterStrikeSharp)
 
 ### ✅ CS2-Tags
