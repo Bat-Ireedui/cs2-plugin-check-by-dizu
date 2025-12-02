@@ -20,7 +20,7 @@ The following plugins are being monitored for version updates:
 
 ### ✅ CS2-SimpleAdmin
 - **Current Version**: build-1.7.8-beta-7
-- **Last Updated**: 28 minutes ago
+- **Last Updated**: 52 minutes ago
 - **Repository**: [daffyyyy/CS2-SimpleAdmin](https://github.com/daffyyyy/CS2-SimpleAdmin)
 
 ### ✅ CS2_ExecAfter
