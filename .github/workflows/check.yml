@@ -1,27 +1,27 @@
-name: Check plugin versions
-on:
-  schedule:
-    - cron: "*/20 * * * *"   # every 20 minutes
-  workflow_dispatch:
+# name: Check plugin versions
+# on:
+#   schedule:
+#     - cron: "*/20 * * * *"   # every 20 minutes
+#   workflow_dispatch:
 
-jobs:
-  check:
-    runs-on: ubuntu-latest
-    permissions:
-      contents: write
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
-        with:
-          python-version: "3.x"
-      - run: pip install -r requirements.txt
-      - run: python check_versions.py
-      - name: Commit version updates
-        run: |
-          git config --local user.email "github-actions[bot]@users.noreply.github.com"
-          git config --local user.name "github-actions[bot]"
-          git add versions.yml README.md
-          if ! git diff --staged --quiet; then
-            git commit -m "Update plugin versions and README"
-            git push
-          fi
+# jobs:
+#   check:
+#     runs-on: ubuntu-latest
+#     permissions:
+#       contents: write
+#     steps:
+#       - uses: actions/checkout@v4
+#       - uses: actions/setup-python@v5
+#         with:
+#           python-version: "3.x"
+#       - run: pip install -r requirements.txt
+#       - run: python check_versions.py
+#       - name: Commit version updates
+#         run: |
+#           git config --local user.email "github-actions[bot]@users.noreply.github.com"
+#           git config --local user.name "github-actions[bot]"
+#           git add versions.yml README.md
+#           if ! git diff --staged --quiet; then
+#             git commit -m "Update plugin versions and README"
+#             git push
+#           fi
